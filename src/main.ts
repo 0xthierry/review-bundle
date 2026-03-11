@@ -17,7 +17,7 @@ import { buildMarkdownBundle, ensureOutputPath, approximateTokens } from "./rend
 import { ensureSelectedFiles } from "./selection";
 
 function log(message: string): void {
-  console.error(`[review-bundle] ${message}`);
+  console.log(`[review-bundle] ${message}`);
 }
 
 export async function run(argv: string[]): Promise<void> {
