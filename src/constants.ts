@@ -8,7 +8,7 @@ export const HELP = `review-bundle
 Build a code review handoff bundle for ChatGPT 5.4 Pro.
 
 Usage:
-  bun run review-bundle -- [options]
+  review-bundle [options]
 
 Options:
   --compare <spec>         auto | uncommitted | staged | base:<branch> | commit:<sha> | range:<revset>
@@ -18,9 +18,9 @@ Options:
   --help                   Show this help.
 
 Examples:
-  bun run review-bundle -- --compare auto
-  bun run review-bundle -- --compare base:main
-  bun run review-bundle -- --compare staged --output review.md
+  review-bundle --compare auto
+  review-bundle --compare base:main
+  review-bundle --compare staged --output review.md
 
 Notes:
   - The builder model is fixed to ${BUILDER_MODEL}.

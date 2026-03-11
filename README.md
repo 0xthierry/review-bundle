@@ -11,31 +11,51 @@ It inspects the current git scope, asks `gpt-5.3-codex` to select the most relev
 - `git`
 - a working `codex` CLI login for the builder step
 
-## Install From Source
+## Install
 
-From the repository root:
+Install the latest GitHub release:
 
 ```bash
-./install.sh
+curl -fsSL https://raw.githubusercontent.com/0xthierry/review-bundle/main/install.sh | sh
+```
+
+Install a specific release:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/0xthierry/review-bundle/main/install.sh | sh -s -- --version vX.Y.Z
 ```
 
 The installer:
 
-- verifies the platform is macOS or Linux
-- installs dependencies with Bun
-- builds the CLI into `dist/`
+- downloads a versioned release artifact from GitHub Releases
+- installs the bundle under `~/.local/share/review-bundle`
 - writes `~/.local/bin/review-bundle`
 
 Important:
 
-- this is a source install
-- the installed command points back to this repository
-- if you move or delete the repository, the installed command will stop working
+- `bun` is still required at runtime
+- `git` and a working `codex` CLI login are required when you actually run reviews
 
 If `~/.local/bin` is not already in your `PATH`, add this to your shell config:
 
 ```bash
 export PATH="$HOME/.local/bin:$PATH"
+```
+
+## Development
+
+Run from a local checkout:
+
+```bash
+bun install
+bun run build
+bun run review-bundle -- --help
+```
+
+Install the current checkout into `~/.local/bin` for local development:
+
+```bash
+./scripts/install-from-source.sh
 ```
 
 ## Usage
@@ -46,22 +66,20 @@ review-bundle --compare base:main
 review-bundle --compare staged --output review.md
 ```
 
-## Development
-
 Run tests:
 
 ```bash
 bun test
 ```
 
-Build:
+## Releases
 
-```bash
-bun run build
-```
+Releases and `CHANGELOG.md` are managed by `release-please` from Conventional Commits.
 
-Run directly from the repo:
+Use commit titles like:
 
-```bash
-bun run review-bundle -- --help
+```text
+feat: add support for custom output paths
+fix: handle deleted files in selected context
+feat!: change the default comparison behavior
 ```

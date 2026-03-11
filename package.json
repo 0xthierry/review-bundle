@@ -1,11 +1,14 @@
 {
   "name": "review-bundle",
+  "version": "0.0.0",
+  "description": "Build code review bundles for ChatGPT 5.4 Pro, using Codex to select the most relevant repository context.",
   "private": true,
   "type": "module",
   "scripts": {
     "build": "bun build --target=bun --outfile dist/review-bundle.js ./src/index.ts",
     "lint": "biome lint .",
     "lint:fix": "biome lint . --write",
+    "package:release": "./scripts/package-release.sh",
     "prepare": "lefthook install",
     "review-bundle": "bun run src/index.ts",
     "test": "bun test",

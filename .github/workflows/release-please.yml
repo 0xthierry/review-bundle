@@ -1,0 +1,65 @@
+name: Release Please
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Run release-please
+        id: release
+        uses: googleapis/release-please-action@v4
+        with:
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN || github.token }}
+          config-file: .github/release-please-config.json
+          manifest-file: .github/.release-please-manifest.json
+
+      - name: Checkout released commit
+        if: ${{ steps.release.outputs.release_created == 'true' }}
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.release.outputs.sha }}
+
+      - name: Setup Bun
+        if: ${{ steps.release.outputs.release_created == 'true' }}
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        if: ${{ steps.release.outputs.release_created == 'true' }}
+        run: bun install --frozen-lockfile
+
+      - name: Lint
+        if: ${{ steps.release.outputs.release_created == 'true' }}
+        run: bun run lint
+
+      - name: Typecheck
+        if: ${{ steps.release.outputs.release_created == 'true' }}
+        run: bun run typecheck
+
+      - name: Test
+        if: ${{ steps.release.outputs.release_created == 'true' }}
+        run: bun test
+
+      - name: Package release archive
+        if: ${{ steps.release.outputs.release_created == 'true' }}
+        run: ./scripts/package-release.sh "${{ steps.release.outputs.tag_name }}" release
+
+      - name: Upload release artifacts
+        if: ${{ steps.release.outputs.release_created == 'true' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN || github.token }}
+        run: gh release upload "${{ steps.release.outputs.tag_name }}" \
+          "release/review-bundle-${{ steps.release.outputs.tag_name }}.tar.gz" \
+          "release/review-bundle-${{ steps.release.outputs.tag_name }}.tar.gz.sha256" \
+          release/review-bundle-latest.tar.gz \
+          release/review-bundle-latest.tar.gz.sha256 \
+          --clobber
