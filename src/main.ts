@@ -17,7 +17,7 @@ import { buildMarkdownBundle, ensureOutputPath, approximateTokens } from "./rend
 import { ensureSelectedFiles } from "./selection";
 
 function log(message: string): void {
-  console.error(`[review-export] ${message}`);
+  console.error(`[review-bundle] ${message}`);
 }
 
 export async function run(argv: string[]): Promise<void> {
@@ -42,7 +42,7 @@ export async function run(argv: string[]): Promise<void> {
 
   const builder = await runCodexBuilder(repoRoot, compareDescription, changedFiles, statusText, recentLog);
   const selections = await ensureSelectedFiles(repoRoot, builder, changedFiles);
-  const title = `code review export (${compareMode.kind === "base" ? compareMode.base : compareMode.kind})`;
+  const title = `code review bundle (${compareMode.kind === "base" ? compareMode.base : compareMode.kind})`;
   const markdown = await buildMarkdownBundle({
     repoRoot,
     title,

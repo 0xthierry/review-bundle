@@ -219,7 +219,7 @@ export async function ensureOutputPath(repoRoot: string, requested?: string, tit
     return absolute;
   }
 
-  const outputDir = path.join(repoRoot, ".review-export");
+  const outputDir = path.join(repoRoot, ".review-bundle");
   await mkdir(outputDir, { recursive: true });
   const stamp = createTimestamp();
   const name = sanitizeForTitle(title ?? "review-bundle") || "review-bundle";

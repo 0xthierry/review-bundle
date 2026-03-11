@@ -1,18 +1,18 @@
 {
-  "name": "review-export",
+  "name": "review-bundle",
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "bun build --target=bun --outfile dist/review-export.js ./src/index.ts",
+    "build": "bun build --target=bun --outfile dist/review-bundle.js ./src/index.ts",
     "lint": "biome lint .",
     "lint:fix": "biome lint . --write",
     "prepare": "lefthook install",
-    "review-export": "bun run src/index.ts",
+    "review-bundle": "bun run src/index.ts",
     "test": "bun test",
     "typecheck": "tsc --noEmit"
   },
   "bin": {
-    "review-export": "./src/index.ts"
+    "review-bundle": "./src/index.ts"
   },
   "dependencies": {
     "mustache": "^4.2.0",

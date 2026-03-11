@@ -150,7 +150,7 @@ export async function runCodexBuilder(
   statusText: string,
   recentLog: string
 ): Promise<BuilderResponse> {
-  const tempDir = await mkdtemp(path.join(tmpdir(), "review-export-"));
+  const tempDir = await mkdtemp(path.join(tmpdir(), "review-bundle-"));
   const schemaPath = path.join(tempDir, "builder-schema.json");
   const outputPath = path.join(tempDir, "builder-output.json");
 

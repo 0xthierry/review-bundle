@@ -24,9 +24,9 @@ fi
 
 repo_root="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
 install_dir="$HOME/.local/bin"
-target="$install_dir/review-export"
+target="$install_dir/review-bundle"
 
-echo "[review-export] installing dependencies"
+echo "[review-bundle] installing dependencies"
 if [ -f "$repo_root/bun.lock" ]; then
   (
     cd "$repo_root"
@@ -39,7 +39,7 @@ else
   )
 fi
 
-echo "[review-export] building CLI"
+echo "[review-bundle] building CLI"
 (
   cd "$repo_root"
   bun run build
@@ -50,19 +50,19 @@ mkdir -p "$install_dir"
 cat >"$target" <<EOF
 #!/usr/bin/env sh
 set -eu
-exec bun "$repo_root/dist/review-export.js" "\$@"
+exec bun "$repo_root/dist/review-bundle.js" "\$@"
 EOF
 
 chmod +x "$target"
 
-echo "[review-export] installed to $target"
+echo "[review-bundle] installed to $target"
 
 case ":$PATH:" in
   *":$install_dir:"*)
     ;;
   *)
-    echo "[review-export] warning: $install_dir is not in PATH" >&2
-    echo "[review-export] add this to your shell config:" >&2
+    echo "[review-bundle] warning: $install_dir is not in PATH" >&2
+    echo "[review-bundle] add this to your shell config:" >&2
     echo "export PATH=\"\$HOME/.local/bin:\$PATH\"" >&2
     ;;
 esac

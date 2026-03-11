@@ -1,6 +1,6 @@
-# review-export
+# review-bundle
 
-`review-export` builds a code review handoff bundle for ChatGPT 5.4 Pro.
+`review-bundle` builds a code review handoff bundle for ChatGPT 5.4 Pro.
 
 It inspects the current git scope, asks `gpt-5.3-codex` to select the most relevant context files, and writes a Markdown bundle plus a JSON selection artifact.
 
@@ -24,7 +24,7 @@ The installer:
 - verifies the platform is macOS or Linux
 - installs dependencies with Bun
 - builds the CLI into `dist/`
-- writes `~/.local/bin/review-export`
+- writes `~/.local/bin/review-bundle`
 
 Important:
 
@@ -41,9 +41,9 @@ export PATH="$HOME/.local/bin:$PATH"
 ## Usage
 
 ```bash
-review-export --compare auto
-review-export --compare base:main
-review-export --compare staged --output review.md
+review-bundle --compare auto
+review-bundle --compare base:main
+review-bundle --compare staged --output review.md
 ```
 
 ## Development
@@ -63,5 +63,5 @@ bun run build
 Run directly from the repo:
 
 ```bash
-bun run review-export -- --help
+bun run review-bundle -- --help
 ```

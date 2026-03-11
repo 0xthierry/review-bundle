@@ -3,7 +3,7 @@ import { approximateTokens, renderChangedFiles, sanitizeForTitle } from "./rende
 
 describe("sanitizeForTitle", () => {
   test("normalizes text for filenames", () => {
-    expect(sanitizeForTitle("Code Review Export (main)")).toBe("code-review-export-main");
+    expect(sanitizeForTitle("Code Review Bundle (main)")).toBe("code-review-bundle-main");
   });
 });
 
