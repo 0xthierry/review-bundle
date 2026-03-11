@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/0xthierry/review-bundle/compare/review-bundle-v0.1.2...review-bundle-v0.1.3) (2026-03-11)
+
+
+### Bug Fixes
+
+* upload versioned release assets ([#5](https://github.com/0xthierry/review-bundle/issues/5)) ([cddebf4](https://github.com/0xthierry/review-bundle/commit/cddebf45d33f16ac8c16b324acdb06b9aecfcd00))
+
 ## [0.1.2](https://github.com/0xthierry/review-bundle/compare/review-bundle-v0.1.1...review-bundle-v0.1.2) (2026-03-11)
 
 
