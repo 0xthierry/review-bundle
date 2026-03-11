@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/0xthierry/review-bundle/compare/review-bundle-v0.1.0...review-bundle-v0.1.1) (2026-03-11)
+
+
+### Bug Fixes
+
+* align release assets with release-please tags ([e70250a](https://github.com/0xthierry/review-bundle/commit/e70250a504b558eff1c9144c5f6faf951d77145c))
+
 ## 0.1.0 (2026-03-11)
 
 
