@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/0xthierry/review-bundle/compare/review-bundle-v0.1.1...review-bundle-v0.1.2) (2026-03-11)
+
+
+### Bug Fixes
+
+* write progress logs to stdout ([#3](https://github.com/0xthierry/review-bundle/issues/3)) ([7557ff2](https://github.com/0xthierry/review-bundle/commit/7557ff26470fdae67a5be913fc0f52e58230bfe5))
+
 ## [0.1.1](https://github.com/0xthierry/review-bundle/compare/review-bundle-v0.1.0...review-bundle-v0.1.1) (2026-03-11)
 
 
