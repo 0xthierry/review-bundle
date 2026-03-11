@@ -1,0 +1,18 @@
+pre-commit:
+  commands:
+    lint-fix:
+      glob:
+        - "src/*.ts"
+        - "src/**/*.ts"
+      run: bunx biome lint --write "{staged_files}"
+      stage_fixed: true
+
+pre-push:
+  parallel: false
+  commands:
+    typecheck:
+      run: bun run typecheck
+    lint:
+      run: bun run lint
+    test:
+      run: bun run test
