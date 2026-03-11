@@ -1,6 +1,6 @@
 {
   "name": "review-bundle",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Build code review bundles for ChatGPT 5.4 Pro, using Codex to select the most relevant repository context.",
   "private": true,
   "type": "module",
