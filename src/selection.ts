@@ -22,7 +22,12 @@ export async function ensureSelectedFiles(
   for (const selection of builder.selected_files) {
     const normalizedPath = normalizeSelectionPath(repoRoot, selection.path);
     if (selection.include_mode === "slice") {
-      deduped.set(normalizedPath, { ...selection, path: normalizedPath });
+      deduped.set(normalizedPath, {
+        path: normalizedPath,
+        rationale: selection.rationale,
+        include_mode: "slice",
+        ranges: selection.ranges
+      });
     } else {
       deduped.set(normalizedPath, {
         path: normalizedPath,
