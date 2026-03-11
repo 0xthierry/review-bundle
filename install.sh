@@ -12,6 +12,10 @@ asset_name_for_version() {
   printf 'review-bundle-%s.tar.gz\n' "$1"
 }
 
+release_tag_for_version() {
+  printf 'review-bundle-%s\n' "$1"
+}
+
 usage() {
   cat <<EOF
 review-bundle installer
@@ -111,7 +115,8 @@ if [ -n "$asset_url_override" ]; then
   asset_url="$asset_url_override"
 elif [ -n "$version" ]; then
   asset_name="$(asset_name_for_version "$version")"
-  asset_url="https://github.com/$repository/releases/download/$version/$asset_name"
+  release_tag="$(release_tag_for_version "$version")"
+  asset_url="https://github.com/$repository/releases/download/$release_tag/$asset_name"
 else
   asset_name="review-bundle-latest.tar.gz"
   asset_url="https://github.com/$repository/releases/latest/download/$asset_name"

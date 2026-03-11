@@ -51,7 +51,7 @@ jobs:
 
       - name: Package release archive
         if: ${{ steps.release.outputs.release_created == 'true' }}
-        run: ./scripts/package-release.sh "${{ steps.release.outputs.tag_name }}" release
+        run: ./scripts/package-release.sh "v${{ steps.release.outputs.version }}" release
 
       - name: Upload release artifacts
         if: ${{ steps.release.outputs.release_created == 'true' }}
