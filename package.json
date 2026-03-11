@@ -1,0 +1,17 @@
+{
+  "name": "review-export",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "bun build --target=bun --outfile dist/review-export.js ./src/index.ts",
+    "review-export": "bun run src/index.ts",
+    "test": "bun test"
+  },
+  "bin": {
+    "review-export": "./src/index.ts"
+  },
+  "dependencies": {
+    "mustache": "^4.2.0",
+    "yaml": "^2.8.2"
+  }
+}

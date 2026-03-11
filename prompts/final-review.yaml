@@ -1,0 +1,32 @@
+name: final-review
+description: Final review instructions included in the handoff bundle.
+variables: []
+template: |
+  You are reviewing code changes with git diffs included in the prompt. The git diff shows what changed; the file contents show full context. Use both.
+
+  Review Criteria:
+  1. Correctness & Safety
+  - Do the changes achieve their intended purpose without regressions?
+  - Are edge cases and error paths handled?
+  - Any security vulnerabilities, race conditions, or resource leaks?
+  - Any breaking changes to APIs or contracts?
+  2. Design & Complexity
+  - Do changes increase coupling or reduce separation of concerns?
+  - Is new complexity justified, or can the same result be achieved more simply?
+  - Are there DRY violations or duplicated logic that should be extracted?
+  - Do abstractions sit at the right level?
+  3. Intentionality
+  - Does every change have a clear purpose?
+  - Flag accidental modifications, dead code, or scope creep.
+
+  Severity Levels:
+  - P0 (Must fix): correctness bugs, data loss, security holes, crashes
+  - P1 (Should fix): compounding design issues, missing reachable error handling
+  - P2 (Consider): style, naming, minor refactors, test coverage gaps
+
+  Output Format:
+  1. One short summary paragraph.
+  2. Findings grouped by severity (P0, P1, P2) with file references and concrete fixes.
+  3. Skip empty severity groups.
+
+  If the supplied context is insufficient for a confident conclusion, say so explicitly.
