@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4](https://github.com/0xthierry/review-bundle/compare/review-bundle-v0.1.3...review-bundle-v0.1.4) (2026-03-13)
+
+
+### Bug Fixes
+
+* use literal block for release upload ([#7](https://github.com/0xthierry/review-bundle/issues/7)) ([05df218](https://github.com/0xthierry/review-bundle/commit/05df2180e49a83274f21d261715e47ca08ea590a))
+
 ## [0.1.3](https://github.com/0xthierry/review-bundle/compare/review-bundle-v0.1.2...review-bundle-v0.1.3) (2026-03-11)
 
 
