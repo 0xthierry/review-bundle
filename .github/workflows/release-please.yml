@@ -57,9 +57,10 @@ jobs:
         if: ${{ steps.release.outputs.release_created == 'true' }}
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN || github.token }}
-        run: gh release upload "${{ steps.release.outputs.tag_name }}" \
-          "release/review-bundle-v${{ steps.release.outputs.version }}.tar.gz" \
-          "release/review-bundle-v${{ steps.release.outputs.version }}.tar.gz.sha256" \
-          release/review-bundle-latest.tar.gz \
-          release/review-bundle-latest.tar.gz.sha256 \
-          --clobber
+        run: |
+          gh release upload "${{ steps.release.outputs.tag_name }}" \
+            "release/review-bundle-v${{ steps.release.outputs.version }}.tar.gz" \
+            "release/review-bundle-v${{ steps.release.outputs.version }}.tar.gz.sha256" \
+            release/review-bundle-latest.tar.gz \
+            release/review-bundle-latest.tar.gz.sha256 \
+            --clobber
